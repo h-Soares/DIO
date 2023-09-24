@@ -11,14 +11,14 @@ public class FederalTax implements Tax {
     private FederalTax() {
     }
 
+    @Override
+    public BigDecimal calculateTax(BigDecimal value) {
+        return value.multiply(TAX_VALUE);
+    }
+
     public static FederalTax getInstance() {
         if(Objects.isNull(federalTax))
             federalTax = new FederalTax();
         return federalTax;
-    }
-
-    @Override
-    public BigDecimal calculateTax(BigDecimal value) {
-        return value.multiply(TAX_VALUE);
     }
 }
